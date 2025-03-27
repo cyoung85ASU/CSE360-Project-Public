@@ -18,7 +18,9 @@ public class StartCSE360 extends Application {
 	
 	@Override
     public void start(Stage primaryStage) {
-        try {
+        System.out.println("Starting application..."); 
+		
+		try {
             databaseHelper.connectToDatabase(); // Connect to the database
             if (databaseHelper.isDatabaseEmpty()) {
             	

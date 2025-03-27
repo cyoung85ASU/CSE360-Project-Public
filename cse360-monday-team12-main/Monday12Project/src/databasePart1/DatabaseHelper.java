@@ -15,16 +15,20 @@ public class DatabaseHelper {
     private Connection connection = null;
     private Statement statement = null;
 
-    public void connectToDatabase() throws SQLException {
+    public void connectToDatabase() {
         try {
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DB_URL, USER, PASS);
             statement = connection.createStatement();
+            System.out.println("Connection successful: " + connection);
+            System.out.println("Statement created: " + statement);
             createTables();
-        } catch (ClassNotFoundException e) {
-            System.err.println(e.getMessage());
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            System.err.println("Database connection failed. Make sure the H2 JAR is in the build path.");
         }
     }
+
 
 
     private void createTables() throws SQLException {
@@ -85,6 +89,11 @@ public class DatabaseHelper {
 
 
     public boolean isDatabaseEmpty() throws SQLException {
+    	
+    	if (statement == null) {
+    	    throw new IllegalStateException("Database not connected. 'statement' is null.");
+    	}
+
         String query = "SELECT COUNT(*) AS count FROM cse360users";
         try (ResultSet rs = statement.executeQuery(query)) {
             if (rs.next()) {

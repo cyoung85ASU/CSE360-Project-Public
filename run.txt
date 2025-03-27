@@ -1,0 +1,26 @@
+RUN Command: 
+
+cyoung@Callans-MacBook-Pro bin % java --module-path /Users/cyoung/Downloads/javafx-sdk-23.0.2/lib \
+     --add-modules javafx.controls,javafx.fxml \
+     -cp .:/Users/cyoung/Downloads/h2/bin/h2-2.3.232.jar \
+     application.StartCSE360
+     
+     
+     
+Output: 
+
+
+Starting application...
+Connection successful: conn0: url=jdbc:h2:~/FoundationDatabase user=SA
+Statement created: stat0
+2025-03-26 19:14:02.345 java[11299:725868] +[IMKClient subclass]: chose IMKClient_Modern
+cyoung@Callans-MacBook-Pro bin % 
+
+for the test
+
+javac \
+  --module-path /Users/cyoung/Downloads/javafx-sdk-23.0.2/lib \
+  --add-modules javafx.controls,javafx.fxml \
+  -cp .:lib/junit-platform-console-standalone-1.10.0.jar \
+  -d bin \
+  $(find cse360-monday-team12-main -name "*.java" -o -name "*.java" -path "./test/*")
