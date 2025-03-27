@@ -18,9 +18,7 @@ cyoung@Callans-MacBook-Pro bin %
 
 for the test
 
-javac \
-  --module-path /Users/cyoung/Downloads/javafx-sdk-23.0.2/lib \
-  --add-modules javafx.controls,javafx.fxml \
-  -cp .:lib/junit-platform-console-standalone-1.10.0.jar \
-  -d bin \
-  $(find cse360-monday-team12-main -name "*.java" -o -name "*.java" -path "./test/*")
+java \            
+  -cp "bin:lib/junit-platform-console-standalone-1.10.0.jar:/Users/cyoung/Downloads/javafx-sdk-23.0.2/lib/*:/Users/cyoung/Downloads/h2/bin/h2-2.3.232.jar" \
+  org.junit.platform.console.ConsoleLauncher \
+  --scan-classpath

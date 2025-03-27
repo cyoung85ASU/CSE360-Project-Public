@@ -8,7 +8,7 @@ import application.User;
 
 import java.sql.SQLException;
 
-class basicTest {
+public class basicTest {
 	
 	static DatabaseHelper dbHelper;
 
